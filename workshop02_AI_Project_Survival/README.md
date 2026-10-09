@@ -1,10 +1,10 @@
-Project
+**Project**
 
 Repository:https://github.com/TencentARC/GFPGAN.git
 
 Inference task:Real-world Face Restoration
 
-Repo map
+**Repo map**
 
 Environment:requirements.txt
 
@@ -16,21 +16,25 @@ Input:inputs/whole_imgs
 
 Output:results/restored_imgs
 
-Environment setup
+**Environment setup**
 
+```bash
 git clone git@github.com:TencentARC/GFPGAN.git
 cd GFPGAN
 uv venv --python 3.8
 source .venv/bin/activate
 uv pip install -r requirements.txt
+```
 
 (In the BasicSR file, found here:.venv/lib/python3.8/site-packages/basicsr/data/degradations.py, replace the line 'from torchvision.transforms.functional_tensor import rgb_to_grayscale' with 'from torchvision.transforms.functional import rgb_to_grayscale')
 
-Inference
+**Inference**
 
+```bash
 python inference_gfpgan.py -i inputs/whole_imgs -o results -v 1.3 -s 2 --bg_upsampler none
+```
 
-One real failure
+**One real failure**
 
 Category:Dependency
 
@@ -38,7 +42,7 @@ Root cause:BasicSR 1.4.2 imported rgb_to_grayscale from torchvision.transforms.f
 
 Minimal fix:In the BasicSR file, found here:.venv/lib/python3.8/site-packages/basicsr/data/degradations.py, replace the line 'from torchvision.transforms.functional_tensor import rgb_to_grayscale' with 'from torchvision.transforms.functional import rgb_to_grayscale'
 
-AI agent check
+**AI agent check**
 
 Which AI coding agent did you use?:Codex
 
